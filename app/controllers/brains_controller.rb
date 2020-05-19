@@ -17,14 +17,13 @@ class BrainsController < ApplicationController
     authorize @brain
     @brain.user_id = current_user.id
     if @brain.save!
-      redirect_to root_path # modifier vers le dashboard une fois créé
+      redirect_to brains_path # modifier vers le dashboard une fois créé
     else
       render :new
     end
   end
 
   def show
-    raise
   end
 
   def edit
@@ -40,7 +39,7 @@ class BrainsController < ApplicationController
 
   def destroy
     @brain.destroy
-    redirect_to root_path # modifier vers le dashboard une fois créé
+    redirect_to brains_path # modifier vers le dashboard une fois créé
   end
 
 
