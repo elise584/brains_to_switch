@@ -1,8 +1,6 @@
 class BrainsController < ApplicationController
   before_action :set_brain, only: [:show, :edit, :update, :destroy]
 
-
-
   def index
     @brains = policy_scope(Brain).order(created_at: :desc)
   end
