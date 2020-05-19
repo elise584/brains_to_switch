@@ -10,19 +10,20 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
-  <body>
-    <% if action_name == 'home' %>
-      <%= render 'shared/navbar_home' %>
-    <% else %>
-      <%= render 'shared/navbar_pages' %>
-    <% end %>
-    <% if notice.present? %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-    <%= render 'shared/flashes' %>
+  <body class='site'>
+    <div class="site-content">
+      <% if action_name == 'home' %>
+        <%= render 'shared/navbar_home' %>
+      <% else %>
+        <%= render 'shared/navbar_pages' %>
+      <% end %>
+      <% if notice.present? %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+      <%= render 'shared/flashes' %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>

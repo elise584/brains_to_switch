@@ -1,0 +1,10 @@
+<h3>🧠 Modify the brain 🧠</h3>
+<%= simple_form_for [@user, @brain] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :category %>
+  <%= f.input :price %>
+
+  <%= f.submit class: 'btn btn-primary'%>
+  <%= f.button :button, "Cancel", type: "reset", class: "btn btn-danger" %>
+<% end %>

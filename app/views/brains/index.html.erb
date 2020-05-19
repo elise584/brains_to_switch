@@ -1,2 +1,22 @@
-<h1>Brains#index</h1>
-<p>Find me in app/views/brains/index.html.erb</p>
+<% @brains.each do |brain| %>
+
+  <p> <%=brain.name%> - <%=brain.description%> - <%=brain.category%></p>
+
+  <% if policy(brain).show? %>
+    <%= link_to 'Show', brain_path(brain) %>
+  <% end %>
+  <% if policy(brain).update? %>
+    <%= link_to 'Edit', edit_brain_path(brain) %>
+  <% end %>
+  <% if policy(brain).destroy? %>
+    <%= link_to "Delete",
+     brain_path(brain),
+     method: :delete,
+     data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <% if policy(brain).create? %>
+    <%= link_to 'New Brain', new_brain_path %>
+  <% end %>
+
+<% end %>
+
