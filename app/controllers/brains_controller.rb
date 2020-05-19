@@ -1,6 +1,6 @@
 class BrainsController < ApplicationController
   def index
-    @brains = Brain.all
+      @brains = Brain.all
   end
 
   def new
