@@ -12,7 +12,11 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <% if action_name == 'home' %>
+      <%= render 'shared/navbar_home' %>
+    <% else %>
+      <%= render 'shared/navbar_pages' %>
+    <% end %>
     <% if notice.present? %>
       <p class="notice"><%= notice %></p>
     <% end %>

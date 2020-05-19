@@ -29,8 +29,6 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
-console.log("blablatest");
-
 document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   // Call your functions here, e.g:
