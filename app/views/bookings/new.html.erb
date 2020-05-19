@@ -1,0 +1,7 @@
+<h3>🧠 Make a new reservation 🧠</h3>
+<%= simple_form_for [@user, @brain, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit class: 'btn btn-primary'%>
+  <%= f.button :button, "Cancel", type: "reset", class: "btn btn-danger" %>
+<% end %>
