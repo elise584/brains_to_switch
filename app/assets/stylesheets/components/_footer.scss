@@ -24,3 +24,13 @@
 .footer .fa-heart {
   color: #D23333;
 }
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
