@@ -1,16 +1,22 @@
-<% @bookings.each do |booking| %>
-
-  <p>Demande pour le cerveau :<%=booking.brain.name%> - Du <%=booking.start_date%> au <%=booking.end_date%> - Demande effectuée par <%=booking.user.first_name%> <%=booking.user.first_name%> - status: <%= booking.status %></p>
-<% end %>
-
-
-
-<% if @brains %>
-  <h2>mes demandes de réservations:</h2>
-  <% @brains.each do |brain| %>
-    <p><%=brain.name%></p>
-    <% brain.bookings.each do |booking| %>
-      <%= booking.status %>
+<div class= "container">
+  <% if @bookings %>
+    <h2>Mes demandes pour louer un cerveau:</h2>
+    <% @bookings.each do |booking| %>
+    <p>Demande pour le cerveau "<%=booking.brain.name%>" </p>
+    <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
+    <p> status: <%= booking.status %> </p>
     <% end %>
   <% end %>
-<% end %>
+
+
+  <% if @brains %>
+    <h2>Hôte: mes demandes de réservations:</h2>
+    <% @brains.each do |brain| %>
+      <p><%=brain.name%></p>
+      <% brain.bookings.each do |booking| %>
+        <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
+        <p> status: <%= booking.status %> </p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
