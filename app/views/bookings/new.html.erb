@@ -1,0 +1,10 @@
+<div class="container mt-100">
+  <h1>Hey</h1>
+  <h3>🧠 Make a new reservation 🧠</h3>
+  <%= simple_form_for [@user, @brain, @booking] do |f| %>
+    <%= f.datetime_field :start_date %>
+    <%= f.datetime_field :end_date %>
+    <%= f.submit class: 'btn btn-primary'%>
+    <%= f.button :button, "Cancel", type: "reset", class: "btn btn-danger" %>
+  <% end %>
+</div>

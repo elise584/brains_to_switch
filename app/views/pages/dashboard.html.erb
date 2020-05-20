@@ -1,0 +1,16 @@
+<% @bookings.each do |booking| %>
+
+  <p>Demande pour le cerveau :<%=booking.brain.name%> - Du <%=booking.start_date%> au <%=booking.end_date%> - Demande effectuée par <%=booking.user.first_name%> <%=booking.user.first_name%> - status: <%= booking.status %></p>
+<% end %>
+
+
+
+<% if @brains %>
+  <h2>mes demandes de réservations:</h2>
+  <% @brains.each do |brain| %>
+    <p><%=brain.name%></p>
+    <% brain.bookings.each do |booking| %>
+      <%= booking.status %>
+    <% end %>
+  <% end %>
+<% end %>
