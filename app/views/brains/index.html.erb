@@ -1,23 +1,39 @@
-<% @brains.each do |brain| %>
+<div class="container">
+  <div class="products-header">
+    <h3 ><%= "An incredible experience in their shoes" %></h3>
+      <% if policy(Brain).create? %>
+        <%= link_to 'New Brain', new_brain_path, class: "btn btn-primary" %>
+      <% end %>
+  </div>
 
+  <div class="card-container">
+    <% @brains.each do |brain| %>
+      <div class="card-product">
+        <%= link_to brain_path(brain) do %>
+          <%= image_tag "art-and-design.svg" %>
+          <div class="card-product-infos">
+            <h6><%= brain.name.capitalize %></h6>
+            <p><i class="far fa-lightbulb"></i><strong><%= " #{brain.category.capitalize}" %></strong></p>
+            <p><%= brain.description.capitalize %></p>
+            <p>
+              <% if policy(brain).show? %>
+                <%= link_to 'Show', brain_path(brain), class: "card-link" %>
+              <% end %>
+              <% if policy(brain).update? %>
+                <%= link_to 'Edit', edit_brain_path(brain), class: "card-link" %>
+              <% end %>
+              <% if policy(brain).destroy? %>
+                <%= link_to "Delete",
+                    brain_path(brain),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: "card-link" %>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
-  <p> <%=brain.name%> - <%=brain.description%> - <%=brain.category%></p>
-
-  <% if policy(brain).show? %>
-    <%= link_to 'Show', brain_path(brain) %>
-  <% end %>
-  <% if policy(brain).update? %>
-    <%= link_to 'Edit', edit_brain_path(brain) %>
-  <% end %>
-  <% if policy(brain).destroy? %>
-    <%= link_to "Delete",
-     brain_path(brain),
-     method: :delete,
-     data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  <% if policy(brain).create? %>
-    <%= link_to 'New Brain', new_brain_path %>
-  <% end %>
-
-<% end %>
-
+</div>
