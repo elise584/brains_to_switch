@@ -1,5 +1,6 @@
 <% @brains.each do |brain| %>
 
+
   <p> <%=brain.name%> - <%=brain.description%> - <%=brain.category%></p>
 
   <% if policy(brain).show? %>
