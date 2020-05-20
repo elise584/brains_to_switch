@@ -17,11 +17,8 @@
       <% else %>
         <%= render 'shared/navbar_pages' %>
       <% end %>
-      <% if notice.present? %>
-        <p class="notice"><%= notice %></p>
-      <% end %>
-      <p class="alert"><%= alert %></p>
       <%= yield %>
+
       <%= render 'shared/flashes' %>
     </div>
     <%= render 'shared/footer' %>
