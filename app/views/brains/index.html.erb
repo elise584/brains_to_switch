@@ -8,30 +8,31 @@
 
   <div class="card-container">
     <% @brains.each do |brain| %>
-      <%= link_to brain_path(brain) do %>
-        <div class="card-product">
+      <div class="card-product">
+        <%= link_to brain_path(brain) do %>
           <%= image_tag "art-and-design.svg" %>
           <div class="card-product-infos">
             <h6><%= brain.name.capitalize %></h6>
             <p><i class="far fa-lightbulb"></i><strong><%= " #{brain.category.capitalize}" %></strong></p>
             <p><%= brain.description.capitalize %></p>
-            <p><% if policy(brain).show? %>
-                  <%= link_to 'Show', brain_path(brain), class: "card-link" %>
-                <% end %>
-                <% if policy(brain).update? %>
-                  <%= link_to 'Edit', edit_brain_path(brain), class: "card-link" %>
-                <% end %>
-                <% if policy(brain).destroy? %>
-                  <%= link_to "Delete",
+            <p>
+              <% if policy(brain).show? %>
+                <%= link_to 'Show', brain_path(brain), class: "card-link" %>
+              <% end %>
+              <% if policy(brain).update? %>
+                <%= link_to 'Edit', edit_brain_path(brain), class: "card-link" %>
+              <% end %>
+              <% if policy(brain).destroy? %>
+                <%= link_to "Delete",
                     brain_path(brain),
                     method: :delete,
                     data: { confirm: 'Are you sure?' },
                     class: "card-link" %>
-                <% end %>
+              <% end %>
             </p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

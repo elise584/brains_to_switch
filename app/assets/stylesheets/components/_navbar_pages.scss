@@ -2,6 +2,8 @@
   justify-content: space-between;
   background-color: white;
   transition: 0.5s background-color ease;
+  position: sticky;
+  top: 0;
 }
 
 .navbar-lewagon-pages .navbar-collapse {
