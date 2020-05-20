@@ -10,15 +10,15 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
   <body class='site'>
     <div class="site-content">
-      <%= render 'shared/navbar' %>
-      <% if notice.present? %>
-        <p class="notice"><%= notice %></p>
+      <% if action_name == 'home' %>
+        <%= render 'shared/navbar_home' %>
+      <% else %>
+        <%= render 'shared/navbar_pages' %>
       <% end %>
-      <p class="alert"><%= alert %></p>
       <%= yield %>
+
       <%= render 'shared/flashes' %>
     </div>
     <%= render 'shared/footer' %>
