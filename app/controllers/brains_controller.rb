@@ -3,6 +3,15 @@ class BrainsController < ApplicationController
 
   def index
     @brains = policy_scope(Brain).order(created_at: :desc)
+    @brainsgeo = Brain.geocoded # returns brains with coordinates
+
+    @markers = @brainsgeo.map do |brain|
+      {
+        lat: brain.latitude,
+        lng: brain.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { brain: brain })
+      }
+    end
   end
 
   def new

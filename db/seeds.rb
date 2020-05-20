@@ -8,7 +8,18 @@
 
 require 'faker'
 
-puts 'Creating 100 fake brains...'
+puts 'Dropping database...'
+User.destroy_all
+Brain.destroy_all
+
+puts 'Creating 20 fake brains...'
+
+addresses = ["12 place Panthéon, Paris",
+  "5 rue Thomas Mann, Paris",
+  "12 rue de l’Ecole de Médecine, Paris",
+  "200, Avenue de la République, Nanterre",
+  "Boulevard François Mitterrand, Evry",
+  "21 rue de l’Ecole de médecine, Paris"]
 
 elise = User.new(first_name: "elise", last_name: "ddlt", email: "elise.dindault@gmail.com", password: "123456!")
 elise.save!
@@ -19,7 +30,8 @@ elise.save!
     category: "science",
     description: "a very scientific brain",
     price:  rand(20..100),
-    user_id: elise.id
+    user: elise,
+    address: addresses.sample
   )
   brain.save!
 end
@@ -30,7 +42,8 @@ end
     category: "philosophy",
     description: "a very philosophic brain",
     price:  rand(20..100),
-    user_id: elise.id
+    user: elise,
+    address: addresses.sample
   )
   brain.save!
 end

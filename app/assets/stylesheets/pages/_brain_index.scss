@@ -1,0 +1,25 @@
+.products-header {
+  margin: 0, auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 25px;
+}
+
+#map {
+  height: 100vh;
+  position: sticky;
+  top: 65px;
+  width: 350px;
+  margin-left: 2rem;
+}
