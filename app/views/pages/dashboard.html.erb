@@ -1,1 +1,6 @@
-<h1>hello</h1>
+<% @bookings.each do |booking| %>
+
+  <p>Demande pour le cerveau :<%=booking.brain%> - Du <%=booking.start_date%> au <%=booking.end_date%> - Demande effectuée par <%=booking.user.first_name%> <%=booking.user.first_name%> </p>
+
+<% end %>
+

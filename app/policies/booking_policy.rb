@@ -1,15 +1,6 @@
-class BrainPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
+class BookingPolicy < ApplicationPolicy
 
-  def index?
-    true
-  end
-
-  def show?
+  def new?
     true  # Anyone can view a brain
   end
 
@@ -17,14 +8,6 @@ class BrainPolicy < ApplicationPolicy
     true  # Anyone can create a brain
   end
 
-  def update?
-    record.user == user  # Only brain creator can update it
-  end
-
-  def destroy?
-    record.user == user  # Only brain creator can delete it
-  end
 end
-
 
 

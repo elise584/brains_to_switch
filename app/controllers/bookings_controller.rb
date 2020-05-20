@@ -5,11 +5,10 @@ class BookingsController < ApplicationController
     authorize @booking
   end
   def create
-
     @booking = current_user.bookings.new(booking_params)
     authorize @booking
+    @booking.brain = Brain.find(params[:brain_id])
     @booking.user_id = current_user.id
-    @booking.brain.user = @brain.user
     if @booking.save!
       redirect_to dashboard_path #users/current:id/bookings <= faut créer la route
     else
