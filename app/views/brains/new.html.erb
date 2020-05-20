@@ -1,10 +1,22 @@
-<h3>🧠 Add a new brain 🧠</h3>
-<%= simple_form_for [@user, @brain] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :category %>
-  <%= f.input :price %>
+<div class="container">
+  <div class="row">
+    <div class="col-6 title">
+        <%= image_tag "education.svg", width:"20%" %>
+        <h3>Propose a new brain</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 content">
+      <%= simple_form_for [@user, @brain] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :description %>
+        <%= f.input :category %>
+        <%= f.input :price %>
 
-  <%= f.submit class: 'btn btn-primary'%>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn btn-danger" %>
-<% end %>
+        <%= f.submit class: 'btn btn-primary'%>
+        <%= f.button :button, "Cancel", type: "reset", class: "btn btn-outline-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
