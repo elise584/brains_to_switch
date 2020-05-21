@@ -1,13 +1,30 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-12 col-sm-8 col-md-4">
-      <div class="brain-title">
-        <div class="card-product-infos">
-          <h2><%= @brain.name %> - <%= @brain.price %> <strong>€</strong></h2>
+  <div class="main-container-brain-show">
+    <div class="left-container-brain-show">
+      <div class="row-6">
+        <div class="col">
+
+          <div class="title-and-pic">
+          <h2><%= @brain.name %></h2>
+            <div class="avatar-xtra-large" >
+              <%= cl_image_tag @brain.photo.key, height: 100, width: 100, crop: :fill %>
+            </div>
+          </div>
+          <div class="line"></div>
           <p><strong>Description: </strong><%= @brain.description %></p>
+
         </div>
       </div>
-      <%= link_to 'Book this brain',  new_brain_booking_path(@brain), class: "btn btn-primary" %>
+    </div>
+    <div class="right-container-brain-show">
+      <div class="row">
+        <div class="col">
+
+          <p><%= @brain.price %> <strong>€</strong>/hour</p>
+          <%= link_to 'Book this brain',  new_brain_booking_path(@brain), class: "btn btn-primary" %>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
