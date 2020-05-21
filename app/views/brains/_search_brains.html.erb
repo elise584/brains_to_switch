@@ -1,0 +1,19 @@
+<%= simple_form_for :search, method: :get do |f| %>
+  <div class="search-form-control form-group search-card">
+
+      <div>
+        <%= text_field_tag :name,
+          params[:name],
+          placeholder: "Name"
+        %>
+      </div>
+      <div>
+        <%= text_field_tag :category,
+          params[:category],
+          placeholder: "Category"
+        %>
+      </div>
+
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>

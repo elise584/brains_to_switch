@@ -1,43 +1,32 @@
 <div class="container">
   <div class="products-header">
     <h3 ><%= "An incredible experience in their shoes" %></h3>
+    <%= render "search_brains" %>
   </div>
 
-  <div class="content">
+  <div class="my-content">
 
     <div class="card-container">
       <% @brains.each do |brain| %>
-        <div class="card-product">
+        <% if !(brain.user == current_user) %>
           <%= link_to brain_path(brain) do %>
-            <%= image_tag "art-and-design.svg" %>
-            <div class="card-product-infos">
-              <h6><%= brain.name.capitalize %></h6>
-              <p><i class="far fa-lightbulb"></i><strong><%= " #{brain.category.capitalize}" %></strong></p>
-              <p><%= brain.description.capitalize %></p>
-              <p>
-                <% if policy(brain).show? %>
-                  <%= link_to 'Show', brain_path(brain), class: "card-link" %>
-                <% end %>
-                <% if policy(brain).update? %>
-                  <%= link_to 'Edit', edit_brain_path(brain), class: "card-link" %>
-                <% end %>
-                <% if policy(brain).destroy? %>
-                  <%= link_to "Delete",
-                      brain_path(brain),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' },
-                      class: "card-link" %>
-                <% end %>
-              </p>
+            <div class="card-brain">
+              <%= image_tag "art-and-design.svg" %>
+              <div class="card-brain-infos">
+                <h5><strong><%= brain.name.capitalize %></strong></h5>
+                <p><i class="far fa-lightbulb"></i><em><%= " #{brain.category.capitalize}" %></em></p>
+                <p><%= brain.description.capitalize %></p>
+                <p><%= brain.address %></p>
+                <p><strong><%= "#{brain.price} € per hour" %></strong></p>
+              </div>
             </div>
           <% end %>
-        </div>
+        <% end %>
       <% end %>
     </div>
 
     <div id="map"
        data-markers="<%= @markers.to_json %>"
-       data-marker-color="#FF5364"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
