@@ -2,8 +2,19 @@ class BrainsController < ApplicationController
   before_action :set_brain, only: [:show, :edit, :update, :destroy]
 
   def index
-    @brains = policy_scope(Brain).order(created_at: :desc)
-    @brainsgeo = Brain.geocoded # returns brains with coordinates
+    if params[:name].present? && params[:category] == ""
+      @brains = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name])
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name]).geocoded
+    elsif params[:name] == "" && params[:category].present?
+      @brains = policy_scope(Brain).order(created_at: :desc).search_by_category(params[:category])
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).search_by_category(params[:category]).geocoded
+    elsif params[:name].present? && params[:category].present?
+      @brains = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name]).search_by_category(params[:category])
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name]).search_by_category(params[:category]).geocoded
+    else
+      @brains = policy_scope(Brain).order(created_at: :desc)
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).geocoded # returns brains with coordinates
+    end
 
     @markers = @brainsgeo.map do |brain|
       {
