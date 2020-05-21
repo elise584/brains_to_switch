@@ -1,0 +1,221 @@
+.card-big{
+  background-color: rgb(246,242,240);
+  margin: 0px;
+}
+
+h2 {
+  color: #FF5364;
+  font-size: 45px;
+  margin-top: 50px;
+  text-align: center;
+  background: -webkit-linear-gradient(#FF5364, #6a040f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+.All-booking {
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-gap: 10px;
+  margin-left : 20px;
+}
+
+.wrapper {
+  height: 420px;
+  width: 654px;
+  margin: 10px auto;
+  border-radius: 7px 7px 7px 7px;
+  /* VIA CSS MATIC https://goo.gl/cIbnS */
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.20);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.20);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.20);
+}
+
+.product-img {
+  float: left;
+  height: 420px;
+  width: 327px;
+}
+
+.product-img img {
+  border-radius: 7px 0 0 7px;
+}
+
+.product-info {
+  float: left;
+  height: 420px;
+  width: 327px;
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
+}
+
+.product-text {
+  height: 300px;
+  width: 327px;
+}
+
+.product-text h1 {
+  margin: 0px 0 10px 70px;
+  padding-top: 18px;
+  font-size: 34px;
+  color: #FF5364;
+}
+
+.product-text h1,
+.product-price-btn p {
+}
+
+.product-text p {
+  height: 35px;
+  margin: 0 0 0 28px;
+  color: #8d8d8d;
+  font-size: 16px;
+  // font-weight: lighter;
+
+}
+
+.product-price-btn {
+  height: 90px;
+  width: 327px;
+  margin-top: -10px;
+  position: relative;
+}
+
+.product-price-btn p {
+  display: inline-block;
+  position: absolute;
+  top: -13px;
+  height: 50px;
+
+  margin: 0 0 0 20px;
+  font-size: 20px;
+  font-weight: lighter;
+  color: #474747;
+}
+
+span {
+  display: inline-block;
+  height: 50px;
+  font-size: 34px;
+}
+
+.product-price-btn button {
+  float: right;
+  display: inline-block;
+  height: 60px;
+  width: 250px;
+  margin: -20px 40px 0 50px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #35A7FF;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-price-btn button:hover {
+  background-color: blue;
+}
+
+
+
+.product-style-btn button {
+  float: right;
+  display: inline-block;
+  height: 60px;
+  width: 156px;
+  margin: -40px 165px 0 50px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #FF5364;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-style-btn button:hover {
+  background-color: red;
+}
+
+.product-edit-btn button {
+  float: right;
+  display: inline-block;
+  height: 60px;
+  width: 156px;
+  margin: -60px 5px 0 50px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #02C39A;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-edit-btn button:hover {
+  background-color: #01704D;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .All-booking {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small dev(landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .All-booking {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .All-booking {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .All-booking {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .All-booking {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

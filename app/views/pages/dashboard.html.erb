@@ -1,4 +1,4 @@
-<div class= "container">
+<!--
   <% if @bookings %>
     <h2>Mes demandes pour louer un cerveau:</h2>
     <% @bookings.each do |booking| %>
@@ -6,9 +6,9 @@
     <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
     <p> status: <%= booking.status %> </p>
     <% end %>
-  <% end %>
+  <% end %> -->
 
-
+<!--
   <% if @brains %>
     <h2>Hôte: mes demandes de réservations:</h2>
     <% @brains.each do |brain| %>
@@ -19,5 +19,67 @@
       <% end %>
     <% end %>
   <% end %>
+</div> -->
+
+<h2>Welcome to your dashboard !</h2>
+
+ <% if @bookings %>
+  <div class="All-booking">
+ <% @bookings.each do |booking| %>
+<!-- <div class="booking-card"> -->
+<div class="card-big">
+
+  <div class="wrapper">
+        <div class="product-img">
+          <img src="https://source.unsplash.com/420x327/?intelligence" height="420" width="327">
+        </div>
+
+   <div class="product-info">
+      <div class="product-text">
+        <h1>My request </h1>
+
+            <p><b> 🧠 Your brain request : </b> "<%=booking.brain.name%>" </p>
+            <p><b>⏱ Booking : </b></p>
+            <p> <%= booking.start_date.strftime("%d %B %Y")%> -- <%= booking.start_date.strftime("%H:%M")%></p>
+            <p>to <%= booking.end_date.strftime("%d %B %Y")%> -- <%= booking.end_date.strftime("%H:%M")%> </p>
+            <p><b>📌 Status : </b> <%= booking.status %> </p>
+            </div>
+
+       <div class="product-price-btn">
+            <button type="button">Contact a seller</button>
+       </div>
+
+      <div class="product-style-btn btn-block">
+          <button type="button"><i class="fas fa-trash-alt"></i></button>
+      </div>
+
+      <div class="product-edit-btn btn-block">
+          <button type="button"><i class="far fa-edit"></i></button>
+      </div>
+
+
+
+    </div>
+  </div>
 </div>
+<!--  </div> -->
+ <% end %>
+     </div>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
