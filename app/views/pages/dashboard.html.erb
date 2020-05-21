@@ -1,23 +1,34 @@
 <div class= "container">
   <% if @bookings %>
-    <h2>Mes demandes pour louer un cerveau:</h2>
+    <h2>Voici vos demandes de réservations <%= current_user.first_name.capitalize%> </h2>
     <% @bookings.each do |booking| %>
     <p>Demande pour le cerveau "<%=booking.brain.name%>" </p>
     <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
     <p> status: <%= booking.status %> </p>
+     <%= link_to 'Edit', edit_booking_path(booking) %>
+     <%= link_to "Delete",
+            booking_path(booking),
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: "card-link" %>
     <% end %>
   <% end %>
 
 
-  <% if @brains %>
-    <h2>Hôte: mes demandes de réservations:</h2>
+<% if @brains %>
     <% @brains.each do |brain| %>
-      <p><%=brain.name%></p>
+  <% if brain.bookings.first %>
+   <h2> <%= current_user.first_name.capitalize%>, vous avez des nouvelles demandes de réservations !</h2>
+    <p><%=brain.name %></p>
+  <% end %>
       <% brain.bookings.each do |booking| %>
         <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
         <p> status: <%= booking.status %> </p>
+       <%= link_to 'Accepter la résa', accepted_path(booking), class: "btn btn-primary" %>
+       <%= link_to 'Décline la résa', declined_path(booking), class: "btn btn-primary" %>
+
+        </div>
       <% end %>
     <% end %>
   <% end %>
 </div>
-
