@@ -8,8 +8,16 @@
         </div>
       </div>
       <hr>
-      <p><strong>Description: </strong><%= @brain.description %></p>
-      <p>Adress: <%= @brain.address %></p>
+      <div class="d-flex flex-column">
+        <div>
+          <p><strong><i class="fas fa-clipboard-list"></i> Description: </strong><%= @brain.description %></p>
+          <p><strong><i class="fas fa-map-pin"></i> Adress: </strong><%= @brain.address %></p>
+          <hr>
+        </div>
+        <div>
+          <p><strong><i class="fas fa-window-close"></i> Cancellation policy: </strong>You have one day to cancell your reservation, you'll be charged one hour fees per cancellation.</p>
+        </div>
+      </div>
     </div>
     <div class="col-4 card shadow p-3 mb-5 bg-white rounded">
       <div class="d-flex justify-content-end">
