@@ -1,4 +1,9 @@
-// app/javascript/plugins/flatpickr.js
 import flatpickr from "flatpickr";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
-flatpickr(".datepicker", {});
+flatpickr("#start_date", {
+  enableTime: true,
+  altInput: true,
+  plugins: [new rangePlugin({ input: "#end_date"})],
+
+});
