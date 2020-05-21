@@ -1,2 +1,14 @@
-<p><%= @brain.name %></p>
-<%= cl_image_tag @brain.photo.key, height: 300, width: 400, crop: :fill %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12 col-sm-8 col-md-4">
+      <div class="brain-title">
+       <%= cl_image_tag @brain.photo.key, height: 300, width: 400, crop: :fill %>
+        <div class="card-product-infos">
+          <h2><%= @brain.name %> - <%= @brain.price %> <strong>€</strong></h2>
+          <p><strong>Description: </strong><%= @brain.description %></p>
+        </div>
+      </div>
+      <%= link_to 'Book this brain',  new_brain_booking_path(@brain), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

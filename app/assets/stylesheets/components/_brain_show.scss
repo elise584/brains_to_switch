@@ -1,0 +1,19 @@
+.brain-title{
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  color: black;
+  width: 236%;
+  height: 246px;
+}
+
+.brain-title img {
+  height: 100%;
+  width: 230px;
+  object-fit: cover;
+  margin-right: 3rem;
+  padding: 2rem;
+}

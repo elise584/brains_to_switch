@@ -51,8 +51,9 @@ class BrainsController < ApplicationController
 
 
   private
+
   def brain_params
-    params.require(:brain).permit(:name, :description, :category, :price, :photo)
+    params.require(:brain).permit(:name, :description, :category, :price, :address, :photo)
   end
 
   def set_brain
