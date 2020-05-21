@@ -5,15 +5,18 @@
   text-align: center;
 }
 
-.content {
-  display: flex;
-
+.my-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 
 .card-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 25px;
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 #map {
@@ -22,4 +25,5 @@
   top: 65px;
   width: 350px;
   margin-left: 2rem;
+  border-radius: 4px;
 }

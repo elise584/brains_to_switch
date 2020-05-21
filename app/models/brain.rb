@@ -7,5 +7,17 @@ class Brain < ApplicationRecord
   validates :address, presence: true
   validates :category, presence: true
   validates :price, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: [ :name ],
+    using: {
+      tsearch: { prefix: true }
+    }
+    pg_search_scope :search_by_category,
+    against: [ :category ],
+    using: {
+      tsearch: { prefix: true }
+    }
   has_one_attached :photo
 end

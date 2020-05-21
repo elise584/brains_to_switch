@@ -1,0 +1,10 @@
+              <% if policy(brain).update? %>
+                <%= link_to 'Edit', edit_brain_path(brain), class: "card-link" %>
+              <% end %>
+              <% if policy(brain).destroy? %>
+                <%= link_to "Delete",
+                    brain_path(brain),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: "card-link" %>
+              <% end %>
