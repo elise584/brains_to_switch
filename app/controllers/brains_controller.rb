@@ -42,6 +42,15 @@ class BrainsController < ApplicationController
   end
 
   def show
+    @booking = current_user.bookings.new
+    @booking.user_id = current_user.id
+    @brainsgeo = @brain.geocoded
+    @markers = @brainsgeo.map do |brain|
+      {
+        lat: brain.latitude,
+        lng: brain.longitude,
+      }
+    end
   end
 
   def edit
