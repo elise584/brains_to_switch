@@ -3,7 +3,7 @@
     <div class="col-7">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h2><%= @brain.name.capitalize %></h2>
-        <% if @brain.photo %>
+        <% if @brain.photo.present? %>
           <div class="avatar-xtra-large" >
             <%= cl_image_tag @brain.photo.key, height: 100, width: 100, crop: :fill %>
           </div>
@@ -16,8 +16,8 @@
       <hr>
       <div class="d-flex flex-column mb-5">
         <div class="mb-3">
-          <p>✏️ <strong>Description: </strong><em><%= @brain.description %></em></p>
-          <p>📌 <strong>Adress: </strong><em><%= @brain.address %></em></p>
+          <p>✏️ <strong>Description: </strong><em><%= @brain.description.capitalize %></em></p>
+          <p>📌 <strong>Address: </strong><em><%= @brain.address %></em></p>
           <hr>
         </div>
         <div>
