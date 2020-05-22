@@ -11,8 +11,13 @@ require 'faker'
 puts 'Dropping database...'
 Brain.destroy_all
 User.destroy_all
+Category.destroy_all
 
-puts 'Creating 20 fake brains...'
+puts 'Creating categories...'
+cat_science = Category.create(name: "science")
+cat_philo = Category.create(name: "philosophy")
+
+puts 'Creating 2 users...'
 
 addresses = ["12 place Panthéon, Paris",
   "5 rue Thomas Mann, Paris",
@@ -27,10 +32,12 @@ elise.save!
 yannis = User.new(first_name: "yannis", last_name: "bou", email: "yannis.bouhamou@hotmail.fr", password: "123456!")
 yannis.save!
 
+puts 'Creating 20 fake brains...'
+
 10.times do
   brain = Brain.new(
     name: Faker::Science.scientist,
-    category: "science",
+    category: cat_science,
     description: "a very scientific brain",
     price:  rand(20..100),
     user: elise,
@@ -42,7 +49,7 @@ end
 10.times do
   brain = Brain.new(
     name: Faker::GreekPhilosophers.name,
-    category: "philosophy",
+    category: cat_philo,
     description: "a very philosophic brain",
     price:  rand(20..100),
     user: yannis,
