@@ -9,9 +9,30 @@
   padding: 15px;
   max-width: 400px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  position: fixed;
+}
+.check-out-card-show-brain hr{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
-.map-brain-show{
-  display: flex;
-  justify-content: flex-start;
+.map-container-brain-show{
+
 }
+.map-brain-show{
+    height: 336px;
+    width: 355px;
+    margin-left: 40px;
+}
+
+// .map-index {
+  // height: 100vh;
+  // position: sticky;
+  // top: 65px;
+  // width: 350px;
+  // margin-left: 2rem;
+  // border-radius: 4px;
+// }

@@ -43,6 +43,21 @@ class BrainsController < ApplicationController
   end
 
   def show
+    @brainsgeo = policy_scope(Brain).order(created_at: :desc).geocoded
+    # @brainsgeo = @brain.geocode
+    # @markers =
+    #   {
+    #     lat: @brainsgeo[0],
+    #     lng: @brainsgeo[1],
+    #   }
+    @markers = @brainsgeo.map do |brain|
+      {
+        lat: brain.latitude,
+        lng: brain.longitude
+      }
+    end
+    @booking = Booking.new
+    @booking.user_id = current_user.id
   end
 
   def edit
