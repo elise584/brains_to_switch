@@ -1,23 +1,82 @@
-<div class= "container">
-  <% if @bookings %>
-    <h2>Mes demandes pour louer un cerveau:</h2>
-    <% @bookings.each do |booking| %>
-    <p>Demande pour le cerveau "<%=booking.brain.name%>" </p>
-    <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
-    <p> status: <%= booking.status %> </p>
+
+<div class= "container text-align-center">
+
+    <% if @bookings %>
+      <h2><%= current_user.first_name.capitalize%>, voici vos demandes de location</h2>
+
+      <div class="cards">
+        <% @bookings.each do |booking| %>
+
+          <div class="card-booking">
+          <%= image_tag "art-and-design.svg" %>
+
+          <p class="pencil"> <i class="far fa-trash-alt"><%= link_to '', edit_booking_path(booking) %></i> </p>
+          <p class="trash"> <i class="fas fa-pencil-alt"><%= link_to "",
+                booking_path(booking),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %> </i> </p>
+
+            <div class="card-body">
+            <h3> My request </h3>
+            <p class="card-text"> 🧠 Brain of "<%= booking.brain.name.capitalize %>"" </p>
+            <p class="card-text"> From <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> </p>
+            <p class="card-text"> To <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
+
+            <p class="card-text"> 📌 Status: <%= booking.status %> </p>
+           </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  <% end %>
+
+    <% if @brains %>
+     <h2> Dashboard hôte </h2>
+      <div class="cards">
+       <% @brains.each do |brain| %>
+        <% brain.bookings.each do |booking| %>
+           <div class="card-booking">
+               <%= image_tag "art-and-design.svg" %>
+                   <p class="trash"> <i class="far fa-trash-alt"><%= link_to '', edit_booking_path(booking) %></i> </p>
+                    <p class="pencil"> <i class="fas fa-pencil-alt"><%= link_to "",
+                        booking_path(booking),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %> </i> </p>
+
+                    <div class="card-body">
+                    <h3> New request for <%= brain.name %></h5>
+                    <p class="card-text"> 🧠 Demandeur: <%= booking.user.first_name.capitalize %> <%= booking.user.last_name.capitalize %>  </p>
+                    <p class="card-text"> From <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> </p>
+                    <p class="card-text"> To <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
+                    <p class="yes-button"> <i class="fas fa-check-circle"></i> <%= link_to '', accepted_path(booking) %> </i> </p>
+                    <p class="no-button"> <i class="fas fa-times-circle"><%= link_to '', declined_path(booking) %> </i> </p>
+                    </div>
+            </div>
+          <% end %>
+       <% end %>
+
+        </div>
+    <% end %>
 
 
-  <% if @brains %>
-    <h2>Hôte: mes demandes de réservations:</h2>
-    <% @brains.each do |brain| %>
-      <p><%=brain.name%></p>
-      <% brain.bookings.each do |booking| %>
-        <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
-        <p> status: <%= booking.status %> </p>
-      <% end %>
-    <% end %>
-  <% end %>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
