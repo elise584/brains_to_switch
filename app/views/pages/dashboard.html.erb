@@ -1,34 +1,82 @@
-<div class= "container">
+<div class="container-cards"></div>
   <% if @bookings %>
-    <h2>Voici vos demandes de réservations <%= current_user.first_name.capitalize%> </h2>
-    <% @bookings.each do |booking| %>
-    <p>Demande pour le cerveau "<%=booking.brain.name%>" </p>
-    <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
-    <p> status: <%= booking.status %> </p>
-     <%= link_to 'Edit', edit_booking_path(booking) %>
-     <%= link_to "Delete",
-            booking_path(booking),
-            method: :delete,
-            data: { confirm: 'Are you sure?' },
-            class: "card-link" %>
-    <% end %>
+      <h2>Voici vos demandes de réservations <%= current_user.first_name.capitalize%> </h2>
+
+      <div class="cards">
+      <% @bookings.each do |booking| %>
+
+        <div class="card-booking">
+       <%= image_tag "art-and-design.svg" %>
+
+          <p class="card-category-left"> <i class="far fa-trash-alt"><%= link_to '', edit_booking_path(booking) %></i> </p>
+          <p class="pencil"> <i class="fas fa-pencil-alt"><%= link_to "",
+                booking_path(booking),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %> </i> </p>
+
+            <div class="card-body">
+            <h3> My request </h3>
+            <p class="card-text"> 🧠 Brain of "<%= booking.brain.name.capitalize %>"" </p>
+            <p class="card-text">  🕗 Booking</p>
+            <p class="card-text"> From <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> </p>
+            <p class="card-text"> To <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
+
+            <p class="card-text"> 📌 Status: <%= booking.status %> </p>
+          </div>
+        </div>
+
+      <% end %>
+     </div>
   <% end %>
 
 
 <% if @brains %>
-    <% @brains.each do |brain| %>
+   <% @brains.each do |brain| %>
   <% if brain.bookings.first %>
-   <h2> <%= current_user.first_name.capitalize%>, vous avez des nouvelles demandes de réservations !</h2>
-    <p><%=brain.name %></p>
+  <h2> <%= current_user.first_name.capitalize%>, vous avez des nouvelles demandes de réservations !</h2>
   <% end %>
-      <% brain.bookings.each do |booking| %>
-        <p> Date: du <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> au <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
-        <p> status: <%= booking.status %> </p>
-       <%= link_to 'Accepter la résa', accepted_path(booking), class: "btn btn-primary" %>
-       <%= link_to 'Décline la résa', declined_path(booking), class: "btn btn-primary" %>
+  <div class="cards">
+    <% brain.bookings.each do |booking| %>
+       <div class="card-booking">
+           <%= image_tag "art-and-design.svg" %>
+               <p class="card-category-left"> <i class="far fa-trash-alt"><%= link_to '', edit_booking_path(booking) %></i> </p>
+                <p class="pencil"> <i class="fas fa-pencil-alt"><%= link_to "",
+                    booking_path(booking),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %> </i> </p>
 
+                <div class="card-body">
+                <h3> New request for <%= brain.name %></h5>
+                <p class="card-text"> 🧠 Demandeur: <%= booking.user.first_name.capitalize %> <%= booking.user.last_name.capitalize %>  </p>
+                <p class="card-text">  🕗 Booking</p>
+                <p class="card-text"> From <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> </p>
+                <p class="card-text"> To <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
+                <p class="yes-button"> <i class="fas fa-check-circle"></i> <%= link_to '', accepted_path(booking) %> </i> </p>
+                <p class="no-button"> <i class="fas fa-times-circle"><%= link_to '', declined_path(booking) %> </i> </p>
+                </div>
         </div>
       <% end %>
-    <% end %>
+  </div>
   <% end %>
+<% end %>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

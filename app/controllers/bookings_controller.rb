@@ -46,7 +46,6 @@ class BookingsController < ApplicationController
   def status_booking_declined
       @booking.status = "declined"
       @booking.save!
-
       redirect_to dashboard_path
   end
 
