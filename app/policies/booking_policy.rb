@@ -21,11 +21,11 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def status_booking_declined?
-    true  # Anyone can create a brain
+    record.brain.user == user  # Anyone can create a brain
   end
 
   def status_booking_accepted?
-    true
+    record.brain.user == user
   end
 
 end
