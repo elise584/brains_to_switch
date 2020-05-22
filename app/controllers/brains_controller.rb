@@ -35,7 +35,7 @@ class BrainsController < ApplicationController
     authorize @brain
     @brain.user_id = current_user.id
     if @brain.save!
-      redirect_to brains_path # modifier vers le dashboard une fois créé
+      redirect_to brains_path # modifier vers le brain_show une fois créé
     else
       render :new
     end
