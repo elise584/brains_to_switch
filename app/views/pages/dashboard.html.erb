@@ -2,8 +2,7 @@
 <div class= "container text-align-center">
 
     <% if @bookings %>
-      <h2>Hello <%= current_user.first_name.capitalize%>, here your requests : </h2>
-
+      <h2>Hello <%= current_user.first_name.capitalize%>, your requests</h2>
       <div class="cards">
         <% @bookings.each do |booking| %>
 
@@ -19,11 +18,17 @@
 
             <div class="card-body">
             <h3> My request </h3>
-            <p class="card-text"> 🧠 Brain of : "<%= booking.brain.name.capitalize %>"" </p>
+            <p class="card-text"> 🧠 Brain of : "<%= booking.brain.name.capitalize %>"</p>
             <p class="card-text"> Starting : <%= booking.start_date.strftime("%d %B %Y")%> - <%= booking.start_date.strftime("%H:%M")%> </p>
             <p class="card-text"> Ending : <%= booking.end_date.strftime("%d %B %Y")%> - <%= booking.end_date.strftime("%H:%M")%> </p>
 
-            <p class="card-text"> 📌 Status : <%= booking.status %> </p>
+            <% if booking.status  ==  "accepted" %>
+              <p class="card-text">  📌 Status : <%= booking.status %> <i class="fas fa-check accepted"></i> </p>
+            <% elsif booking.status ==  "declined" %>
+              <p class="card-text">  📌 Status : <%= booking.status %> <i class="far fa-times-circle rejected"></i>  </p>
+            <% else  %>
+              <p class="card-text">  📌 Status : <%= booking.status %>  </p>
+            <% end %>
            </div>
           </div>
         <% end %>
@@ -31,7 +36,7 @@
     <% end %>
 
     <% if @brains %>
-     <h2> Hello <%= current_user.first_name.capitalize%>, here your askings : </h2>
+     <h2> Your pending requests</h2>
       <div class="cards">
        <% @brains.each do |brain| %>
         <% brain.bookings.each do |booking| %>
