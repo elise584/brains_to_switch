@@ -2,7 +2,7 @@
 <div class= "container text-align-center">
 
     <% if @bookings %>
-      <h2><%= current_user.first_name.capitalize%>, voici vos demandes de location</h2>
+      <h2>Hello <%= current_user.first_name.capitalize%>, here your requests : </h2>
 
       <div class="cards">
         <% @bookings.each do |booking| %>
@@ -19,11 +19,11 @@
 
             <div class="card-body">
             <h3> My request </h3>
-            <p class="card-text"> 🧠 Brain of "<%= booking.brain.name.capitalize %>"" </p>
-            <p class="card-text"> From <%= booking.start_date.strftime("%d %B %Y")%> à <%= booking.start_date.strftime("%H:%M")%> </p>
-            <p class="card-text"> To <%= booking.end_date.strftime("%d %B %Y")%> à <%= booking.end_date.strftime("%H:%M")%> </p>
+            <p class="card-text"> 🧠 Brain of : "<%= booking.brain.name.capitalize %>"" </p>
+            <p class="card-text"> Starting : <%= booking.start_date.strftime("%d %B %Y")%> - <%= booking.start_date.strftime("%H:%M")%> </p>
+            <p class="card-text"> Ending : <%= booking.end_date.strftime("%d %B %Y")%> - <%= booking.end_date.strftime("%H:%M")%> </p>
 
-            <p class="card-text"> 📌 Status: <%= booking.status %> </p>
+            <p class="card-text"> 📌 Status : <%= booking.status %> </p>
            </div>
           </div>
         <% end %>
@@ -31,18 +31,12 @@
     <% end %>
 
     <% if @brains %>
-     <h2> Dashboard hôte </h2>
+     <h2> Hello <%= current_user.first_name.capitalize%>, here your askings : </h2>
       <div class="cards">
        <% @brains.each do |brain| %>
         <% brain.bookings.each do |booking| %>
            <div class="card-booking">
                <%= image_tag "art-and-design.svg" %>
-                   <p class="trash"> <i class="far fa-trash-alt"><%= link_to '', edit_booking_path(booking) %></i> </p>
-                    <p class="pencil"> <i class="fas fa-pencil-alt"><%= link_to "",
-                        booking_path(booking),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %> </i> </p>
-
                     <div class="card-body">
                     <h3> New request for <%= brain.name %></h5>
                     <p class="card-text"> 🧠 Demandeur: <%= booking.user.first_name.capitalize %> <%= booking.user.last_name.capitalize %>  </p>
