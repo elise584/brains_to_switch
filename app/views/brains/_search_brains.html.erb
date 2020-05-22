@@ -1,19 +1,32 @@
-<%= simple_form_for :search, method: :get do |f| %>
-  <div class="search-form-control form-group search-card">
-
-      <div>
+<div class="input-group-inline mb-3">
+  <%= form_tag brains_path, method: :get do |f| %>
         <%= text_field_tag :name,
           params[:name],
-          placeholder: "Name"
+          placeholder: "Name",
+          class: "form-control"
         %>
-      </div>
-      <div>
-        <%= text_field_tag :category,
-          params[:category],
-          placeholder: "Category"
+        <%= select_tag "category",
+          options_from_collection_for_select(@categories, "id", "name", params[:category]),
+          prompt: "Category",
+          class: "custom-select",
+          id: "inputGroupSelect04"
         %>
+      <div class="input-group-append">
+        <%= submit_tag "Search", class: "btn btn-outline-primary" %>
       </div>
+  <% end %>
+</div>
 
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+
+<div class="input-group">
+  <input type="text" class="form-control">
+  <select class="custom-select" id="inputGroupSelect04">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="button">Button</button>
   </div>
-<% end %>
+</div>

@@ -2,6 +2,7 @@ class BrainsController < ApplicationController
   before_action :set_brain, only: [:show, :edit, :update, :destroy]
 
   def index
+    @categories = Category.all
     if params[:name].present? && params[:category] == ""
       @brains = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name])
       @brainsgeo = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name]).geocoded
@@ -64,7 +65,7 @@ class BrainsController < ApplicationController
   private
 
   def brain_params
-    params.require(:brain).permit(:name, :description, :category, :price, :address, :photo)
+    params.require(:brain).permit(:name, :description, :category_id, :price, :address, :photo)
   end
 
   def set_brain
