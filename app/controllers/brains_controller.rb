@@ -2,8 +2,20 @@ class BrainsController < ApplicationController
   before_action :set_brain, only: [:show, :edit, :update, :destroy]
 
   def index
-    @brains = policy_scope(Brain).order(created_at: :desc)
-    @brainsgeo = Brain.geocoded # returns brains with coordinates
+    @categories = Category.all
+    if params[:name].present? && params[:category] == ""
+      @brains = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name])
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name]).geocoded
+    elsif params[:name] == "" && params[:category].present?
+      @brains = policy_scope(Brain).order(created_at: :desc).search_by_category(params[:category])
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).search_by_category(params[:category]).geocoded
+    elsif params[:name].present? && params[:category].present?
+      @brains = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name]).search_by_category(params[:category])
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).search_by_name(params[:name]).search_by_category(params[:category]).geocoded
+    else
+      @brains = policy_scope(Brain).order(created_at: :desc)
+      @brainsgeo = policy_scope(Brain).order(created_at: :desc).geocoded # returns brains with coordinates
+    end
 
     @markers = @brainsgeo.map do |brain|
       {
@@ -24,7 +36,7 @@ class BrainsController < ApplicationController
     authorize @brain
     @brain.user_id = current_user.id
     if @brain.save!
-      redirect_to brains_path # modifier vers le dashboard une fois créé
+      redirect_to brains_path # modifier vers le brain_show une fois créé
     else
       render :new
     end
@@ -53,7 +65,7 @@ class BrainsController < ApplicationController
   private
 
   def brain_params
-     params.require(:brain).permit(:name, :description, :category, :price, :address)
+    params.require(:brain).permit(:name, :description, :category_id, :price, :address, :photo)
   end
 
   def set_brain

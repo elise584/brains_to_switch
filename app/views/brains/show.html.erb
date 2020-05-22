@@ -1,14 +1,38 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-12 col-sm-8 col-md-4">
-      <div class="brain-title">
-        <%= image_tag "education.svg" %>
-        <div class="card-product-infos">
-          <h2><%= @brain.name %> - <%= @brain.price %> <strong>€</strong></h2>
-          <p><strong>Description: </strong><%= @brain.description %></p>
+  <div class="row mt-4 justify-content-between">
+    <div class="col-7">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2><%= @brain.name.capitalize %></h2>
+        <% if @brain.photo %>
+          <div class="avatar-xtra-large" >
+            <%= cl_image_tag @brain.photo.key, height: 100, width: 100, crop: :fill %>
+          </div>
+        <% else %>
+          <div class="avatar-xtre-large">
+            <%= cl_image_tag "education.svg", height: 100, width: 100, crop: :fill %>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <div class="d-flex flex-column mb-5">
+        <div class="mb-3">
+          <p>✏️ <strong>Description: </strong><em><%= @brain.description %></em></p>
+          <p>📌 <strong>Adress: </strong><em><%= @brain.address %></em></p>
+          <hr>
+        </div>
+        <div>
+          <p>❌ <strong>Cancellation policy: </strong><em>You have one day to cancell your reservation, you'll be charged one hour fees per cancellation.</em></p>
         </div>
       </div>
+    </div>
+    <div class="col-4 check-out-card-show-brain fixed-top">
+      <div class="d-flex justify-content-end">
+        <p><%= @brain.price %> <strong>€</strong>/hour</p>
+      </div>
+      <hr>
+      <%= image_tag "art-and-design.svg", width:"70%" %>
       <%= link_to 'Book this brain',  new_brain_booking_path(@brain), class: "btn btn-primary" %>
     </div>
+    <%= image_tag "map.png", height:"400px", width:"650px", crop: :fill, class: "rounded" %>
   </div>
 </div>

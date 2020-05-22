@@ -10,13 +10,13 @@
           <%= f.input :name %>
           <%= f.input :address %>
           <%= f.input :description %>
-          <%= f.input :category %>
+          <%= f.association :category %>
           <%= f.input :price %>
           <%= f.submit class: 'btn btn-primary btn-block'%>
           <%= f.button :button, "Cancel", type: "reset", class: "btn btn-outline-primary btn-block" %>
-      </div>
         <% end %>
+      </div>
+        
   </div>
 
 </div>
-

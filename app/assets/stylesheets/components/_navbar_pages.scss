@@ -4,6 +4,8 @@
   transition: 0.5s background-color ease;
   position: sticky;
   top: 0;
+  border-bottom: 1px ridge rgba(255, 83, 84, .2);
+  z-index: 1;
 }
 
 .navbar-lewagon-pages .navbar-collapse {
