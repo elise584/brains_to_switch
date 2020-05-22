@@ -19,9 +19,12 @@ class Brain < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-    # pg_search_scope :search_by_category,
-    # against: [ :category ],
-    # using: {
-    #   tsearch: { prefix: true }
-    # }
+    pg_search_scope :search_by_category,
+    against: [ :category_id ],
+    associated_against: {
+      category: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
