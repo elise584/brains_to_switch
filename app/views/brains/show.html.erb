@@ -33,6 +33,9 @@
       <%= image_tag "art-and-design.svg", width:"70%" %>
       <%= link_to 'Book this brain',  new_brain_booking_path(@brain), class: "btn btn-primary" %>
     </div>
-    <%= image_tag "map.png", height:"400px", width:"650px", crop: :fill, class: "rounded" %>
+      <div class="" id="map"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
   </div>
 </div>
