@@ -24,6 +24,9 @@
         <% end %>
       <% end %>
     </div>
-  <%= image_tag "map.png", height:"400px", width:"650px", crop: :fill, class: "rounded" %>
+      <div id="map"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
   </div>
 </div>
