@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_093931) do
+ActiveRecord::Schema.define(version: 2020_05_22_072122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_093931) do
 
   create_table "brains", force: :cascade do |t|
     t.string "name"
-    t.string "category"
     t.text "description"
     t.integer "price"
     t.bigint "user_id", null: false
@@ -59,7 +58,15 @@ ActiveRecord::Schema.define(version: 2020_05_21_093931) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_brains_on_category_id"
     t.index ["user_id"], name: "index_brains_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,5 +87,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_093931) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "brains"
   add_foreign_key "bookings", "users"
+  add_foreign_key "brains", "categories"
   add_foreign_key "brains", "users"
 end

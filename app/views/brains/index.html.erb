@@ -13,9 +13,8 @@
             <div class="card-brain">
               <%= image_tag "art-and-design.svg" %>
               <div class="card-brain-infos">
-                <h5><strong><%= brain.name.capitalize %></strong></h5>
-                <p><i class="far fa-lightbulb"></i><em><%= " #{brain.category.capitalize}" %></em></p>
-                <p><%= brain.description.capitalize %></p>
+                <h5><strong><%= brain.name %></strong></h5>
+                <p><i class="far fa-lightbulb"></i><em><%= " #{brain.category.name.capitalize}" %></em></p>
                 <p><%= brain.address %></p>
                 <p><strong><%= "#{brain.price} € /hour" %></strong></p>
               </div>
