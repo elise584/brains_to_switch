@@ -11,8 +11,8 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if policy(Brain).create? %>
-        <li class="nav-item">
-          <%= link_to 'Propose a switch', new_brain_path %>
+        <li class="nav-item ">
+          <%= link_to 'Propose a switch', new_brain_path, class: "nav-link" %>
         </li>
       <% end %>
       <% if user_signed_in? %>
