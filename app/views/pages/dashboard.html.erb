@@ -30,11 +30,9 @@
     <% end %>
 
     <% if @brains %>
+     <h2> Dashboard hôte </h2>
+      <div class="cards">
        <% @brains.each do |brain| %>
-      <% if brain.bookings.first %>
-      <h2> Dashboard hôte </h2>
-      <% end %>
-      <div class="cards text">
         <% brain.bookings.each do |booking| %>
            <div class="card-booking">
                <%= image_tag "art-and-design.svg" %>
@@ -54,8 +52,9 @@
                     </div>
             </div>
           <% end %>
+       <% end %>
+
         </div>
-      <% end %>
     <% end %>
 
 
