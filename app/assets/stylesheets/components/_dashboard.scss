@@ -1,9 +1,28 @@
+.container-cards {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,0.125);
+  border-radius: 2px;
+}
+
+.container-visitor {
+  display: flex;
+  text-align: center;
+}
+
+.container-host {
+  display: flex;
+  text-align: center;
+}
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
 }
-
 
 .card-booking {
   height: 200px;
@@ -26,12 +45,15 @@
   width: 200px;
 }
 
-.card-body {
-  display: block;
-  padding: 0px;
-  margin: 0px;
-}
-.card-category-left {
+ .card-text {
+  height: 35px;
+  margin: 0 0 0 28px;
+  color: #8D8D8D;
+  font-size: 16px;
+  font-weight: lighter;
+  }
+
+.trash {
     color:#FF5364;
     padding: 2px;
     margin: 0px;
@@ -42,41 +64,33 @@
   }
 
 .yes-button {
-    color: green;
-    padding: 2px;
-    margin: 0px;
-    border-radius: 15px;
-    position: absolute;
-    bottom: 0px;
-    right: 10px;
+  color: green;
+  padding: 2px;
+  margin: 0px;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
   }
 
 .no-button {
-    color: red;
-    padding: 2px;
-    margin: 0px;
-    border-radius: 15px;
-    position: absolute;
-    bottom: 0px;
-    right: 30px;
+  color: red;
+  padding: 2px;
+  margin: 0px;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
   }
 
   .pencil {
-    color: #FF5364;
-    padding: 2px;
-    margin: 0px;
-    border-radius: 15px;
-    position: absolute;
-    bottom: 0px;
-    left: 27px;
-  }
-
-  .card-text {
-  height: 35px;
-  margin: 0 0 0 28px;
-  color: #8D8D8D;
-  font-size: 16px;
-  font-weight: lighter;
+  color: #FF5364;
+  padding: 2px;
+  margin: 0px;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 0px;
+  left: 27px;
   }
 
 
@@ -86,6 +100,8 @@ h3 {
 }
 
 h2 {
+  margin-top: 15px;
+  margin-bottom: 15px;
   color: #FF5364;
   font-size: 33px;
   text-align: center;
@@ -93,23 +109,6 @@ h2 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-
-
-.container-cards {
-
-  position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,0.125);
-    border-radius: 2px;
-}
-
-
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
