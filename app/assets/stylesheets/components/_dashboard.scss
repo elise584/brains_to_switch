@@ -68,6 +68,14 @@
     padding-right: 20px;
   }
 
+.accepted {
+  color: green;
+}
+
+.fa-times-circle {
+  color: red;
+}
+
 .yes-button {
   padding: 2px;
   margin: 0px;
@@ -110,14 +118,14 @@
     color: #35A7FF;
   }
 
-h3 {
+.container.text-align-center h3 {
   font-size: 24px;
   color: #35A7FF;
   margin-bottom : 10px;
   margin-left: 25px;
 }
 
-h2 {
+.container.text-align-center h2 {
   margin-top: 20px;
   margin-bottom: 20px;
   color: #FF5364;
